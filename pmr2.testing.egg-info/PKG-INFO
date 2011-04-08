@@ -1,0 +1,25 @@
+Metadata-Version: 1.0
+Name: pmr2.testing
+Version: trunkdev
+Summary: pmr2.testing
+Home-page: UNKNOWN
+Author: Tommy Yu
+Author-email: tommy.yu@auckland.ac.nz
+License: GPL
+Description: Introduction
+        ============
+        
+        This package provides a shared testing module for all PMR2 modules.
+        
+        Changelog
+        =========
+        
+        trunk - Unreleased
+        ----------------
+        
+        * Initial release
+        
+        
+Platform: UNKNOWN
+Classifier: Programming Language :: Python
+Classifier: Topic :: Software Development :: Libraries :: Python Modules
