@@ -1,3 +1,4 @@
+import hmac
 import tempfile
 import shutil
 
@@ -6,6 +7,10 @@ import zope.component
 import z3c.form.testing
 from zope.annotation import IAnnotations
 from Zope2.App.zcml import load_config
+
+from plone.keyring.interfaces import IKeyManager
+from plone.protect.authenticator import _getUserName
+from plone.protect.authenticator import sha
 
 from Products.PloneTestCase import PloneTestCase as ptc
 
@@ -29,6 +34,7 @@ class TestRequest(z3c.form.testing.TestRequest):
         super(TestRequest, self).__init__(*a, **kw)
         if self.form:
             self.method = 'POST'
+            self._set_authenticator()
 
     def __setitem__(self, key, value):
         self.form[key] = value
@@ -38,6 +44,13 @@ class TestRequest(z3c.form.testing.TestRequest):
             return super(TestRequest, self).__getitem__(key)
         except KeyError:
             return self.form[key]
+
+    def _set_authenticator(self):
+        manager = zope.component.getUtility(IKeyManager)
+        secret = manager.secret()
+        user = _getUserName()
+        auth = hmac.new(secret, user, sha).hexdigest()
+        self['_authenticator'] = auth
 
     def getApplicationURL(self):
         # XXX compatibility with the more strict redirection introduced

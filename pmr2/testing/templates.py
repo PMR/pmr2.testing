@@ -1,5 +1,6 @@
 import os.path
 import z3c.form.interfaces
+from zope.publisher.browser import BrowserView
 from plone.z3cform.templates import ZopeTwoFormTemplateFactory
 
 from pmr2.testing.base import IPMR2TestRequest
