@@ -1,8 +1,9 @@
 Changelog
 =========
 
-trunk - Unreleased
-----------------
+0.2 - Released (2011-08-16)
+---------------------------
 
-* Initial release
+* Incorporated the key testing classes that were in pmr2.app but shared
+  across many pmr2 integration tests.
 
