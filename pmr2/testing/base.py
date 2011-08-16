@@ -32,6 +32,7 @@ class TestRequest(z3c.form.testing.TestRequest):
     zope.interface.implements(IAnnotations, IPMR2TestRequest)
     def __init__(self, *a, **kw):
         super(TestRequest, self).__init__(*a, **kw)
+        self.environ = {}
         if self.form:
             self.method = 'POST'
             self._set_authenticator()
