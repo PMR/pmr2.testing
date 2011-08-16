@@ -15,7 +15,9 @@ pmr2.testing.egg-info/requires.txt
 pmr2.testing.egg-info/top_level.txt
 pmr2/testing/__init__.py
 pmr2/testing/base.py
+pmr2/testing/browser.py
 pmr2/testing/form.pt
 pmr2/testing/pmr2.app.testdata.tgz
 pmr2/testing/templates.py
 pmr2/testing/test.zcml
+pmr2/testing/utils.py
