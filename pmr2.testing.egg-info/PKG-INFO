@@ -1,6 +1,6 @@
 Metadata-Version: 1.0
 Name: pmr2.testing
-Version: trunkdev
+Version: 0.2
 Summary: pmr2.testing
 Home-page: UNKNOWN
 Author: Tommy Yu
@@ -14,10 +14,11 @@ Description: Introduction
         Changelog
         =========
         
-        trunk - Unreleased
-        ----------------
+        0.2 - Released (2011-08-16)
+        ---------------------------
         
-        * Initial release
+        * Incorporated the key testing classes that were in pmr2.app but shared
+        across many pmr2 integration tests.
         
         
 Platform: UNKNOWN
