@@ -46,7 +46,11 @@ class TestRequest(z3c.form.testing.TestRequest):
             return self.form[key]
 
     def _set_authenticator(self):
-        manager = zope.component.getUtility(IKeyManager)
+        manager = zope.component.queryUtility(IKeyManager)
+        if not manager:
+            # Since the key manager is not installed, authenticator 
+            # should not be working anyway.
+            return
         secret = manager.secret()
         user = _getUserName()
         auth = hmac.new(secret, user, sha).hexdigest()
