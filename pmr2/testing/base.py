@@ -79,6 +79,10 @@ class DocTestCase(ptc.FunctionalTestCase):
         load_config('test.zcml', pmr2.testing)
         super(DocTestCase, self).setUp()
         self.tmpdir = tempfile.mkdtemp()
+        
+        zope.interface.alsoProvides(self.portal.REQUEST,
+            IPMR2TestRequest,
+            self.portal.REQUEST.__provides__.interfaces())
 
     def tearDown(self):
         super(DocTestCase, self).tearDown()
