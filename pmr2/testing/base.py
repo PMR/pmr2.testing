@@ -13,6 +13,7 @@ from plone.protect.authenticator import _getUserName
 from plone.protect.authenticator import sha
 
 from Products.PloneTestCase import PloneTestCase as ptc
+from Products.CMFCore.utils import getToolByName
 
 import pmr2.testing
 
@@ -82,4 +83,13 @@ class DocTestCase(ptc.FunctionalTestCase):
     def tearDown(self):
         super(DocTestCase, self).tearDown()
         shutil.rmtree(self.tmpdir, ignore_errors=True)
+
+    def _publishContent(self, obj):
+        # shortcut that works for default workflow types.
+        # XXX figure out a better way to force workflow states right
+        # without messing with permissions.
+        pw = getToolByName(self.portal, "portal_workflow")
+        self.setRoles(('Manager',))
+        pw.doActionFor(obj, "publish")
+        self.setRoles(('Member', 'Authenticated',))
 
