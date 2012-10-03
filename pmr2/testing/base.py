@@ -79,7 +79,12 @@ class DocTestCase(ptc.FunctionalTestCase):
         load_config('test.zcml', pmr2.testing)
         super(DocTestCase, self).setUp()
         self.tmpdir = tempfile.mkdtemp()
+        # XXX see below
+        # original_ifaces = self.portal.REQUEST.__provides__.interfaces()
+        self.forceLayerOnPortal(True)
         
+    def forceLayerOnPortal(self, state=True):
+        # XXX make this undoable
         zope.interface.alsoProvides(self.portal.REQUEST,
             IPMR2TestRequest,
             self.portal.REQUEST.__provides__.interfaces())
