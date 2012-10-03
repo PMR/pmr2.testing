@@ -1,6 +1,13 @@
 Changelog
 =========
 
+0.3 - Released (2012-09-03)
+---------------------------
+
+* Fix the application of test layer to facilitate better testing 
+  procedures.
+
+
 0.2 - Released (2011-08-16)
 ---------------------------
 
