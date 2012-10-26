@@ -5,9 +5,12 @@ import shutil
 import zope.interface
 import zope.component
 import z3c.form.testing
+from zope.app.publication.zopepublication import BeforeTraverseEvent
 from zope.annotation import IAnnotations
 from Zope2.App.zcml import load_config
 
+from plone.browserlayer.layer import mark_layer
+from plone.browserlayer.utils import register_layer
 from plone.keyring.interfaces import IKeyManager
 from plone.protect.authenticator import _getUserName
 from plone.protect.authenticator import sha
@@ -79,15 +82,12 @@ class DocTestCase(ptc.FunctionalTestCase):
         load_config('test.zcml', pmr2.testing)
         super(DocTestCase, self).setUp()
         self.tmpdir = tempfile.mkdtemp()
-        # XXX see below
-        # original_ifaces = self.portal.REQUEST.__provides__.interfaces()
-        self.forceLayerOnPortal(True)
-        
-    def forceLayerOnPortal(self, state=True):
-        # XXX make this undoable
-        zope.interface.alsoProvides(self.portal.REQUEST,
-            IPMR2TestRequest,
-            self.portal.REQUEST.__provides__.interfaces())
+        register_layer(IPMR2TestRequest, 'pmr2.app.testing')
+
+    def markLayer(self):
+        # Helper method to trigger the mark layer event.
+        event = BeforeTraverseEvent(self.portal, self.portal.REQUEST)
+        mark_layer(self.portal, event)
 
     def tearDown(self):
         super(DocTestCase, self).tearDown()
