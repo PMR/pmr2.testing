@@ -3,15 +3,4 @@
     xmlns:browser="http://namespaces.zope.org/browser"
     i18n_domain="pmr2.testing">
         
-  <adapter factory=".templates.standalone_form_factory" />
-<!--  <adapter factory=".templates.subform_factory" />-->
-
-  <browser:page
-      name="main_template"
-      for="*"
-      layer="pmr2.testing.base.IPMR2TestRequest"
-      template="main_template.pt"
-      permission="zope.Public"
-      />
-
 </configure>
