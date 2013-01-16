@@ -1,6 +1,13 @@
 Changelog
 =========
 
+0.4 - Unreleased
+----------------
+
+* Moved the form related test helpers to pmr2.z3cform.  The previous
+  import locations will be maintained for now as this package will still
+  be used to provide code to assist testing of PMR2 core packages.
+
 0.3 - Released (2012-10-03)
 ---------------------------
 
