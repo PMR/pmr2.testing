@@ -1,6 +1,6 @@
 import os.path
 from z3c.form import tests
-from zope.app.pagetemplate.viewpagetemplatefile import ViewPageTemplateFile
+from zope.browserpage.viewpagetemplatefile import ViewPageTemplateFile
 
 
 class GroupTemplate(object):
