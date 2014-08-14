@@ -1,23 +1,15 @@
-import hmac
 import tempfile
 import shutil
 
-import zope.interface
-import zope.component
-import z3c.form.testing
-from zope.annotation import IAnnotations
 from Zope2.App.zcml import load_config
-
-from plone.keyring.interfaces import IKeyManager
-from plone.protect.authenticator import _getUserName
-from plone.protect.authenticator import sha
 
 from Products.PloneTestCase import PloneTestCase as ptc
 from Products.CMFCore.utils import getToolByName
 
 from pmr2.z3cform.tests import base
-from pmr2.z3cform.tests.base import IPMR2TestRequest, TestRequest
-import pmr2.testing
+# BBB should mark this import location as deprecated.
+from pmr2.z3cform.tests.base import TestRequest
+from pmr2.z3cform.tests.base import IPMR2TestRequest
 
 
 class TestCase(ptc.PloneTestCase):
@@ -33,6 +25,7 @@ class DocTestCase(base.DocTestCase):
     """
 
     def setUp(self):
+        import pmr2.testing
         load_config('test.zcml', pmr2.testing)
         super(DocTestCase, self).setUp()
         self.tmpdir = tempfile.mkdtemp()
