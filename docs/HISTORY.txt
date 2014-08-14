@@ -1,6 +1,12 @@
 Changelog
 =========
 
+0.5 - Released (2014-08-14)
+---------------------------
+
+* Cleaned up some imports that are not needed here since that last move.
+* Some new test data files.
+
 0.4 - Released (2013-07-08)
 ---------------------------
 
